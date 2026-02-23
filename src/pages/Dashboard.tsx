@@ -61,7 +61,7 @@ export default function Dashboard() {
                     </div>
                     <div className="card">
                         <div className="card-body">
-                            <h3 className="text-gray-500 text-sm font-medium uppercase tracking-wider">Por Vencer (<30d)</h3>
+                            <h3 className="text-gray-500 text-sm font-medium uppercase tracking-wider">Por Vencer (&lt;30d)</h3>
                             <p className="mt-2 text-3xl font-bold text-escayr-accent">5</p>
                         </div>
                     </div>
