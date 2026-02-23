@@ -1,0 +1,105 @@
+# A string used to distinguish different Supabase projects on the same host. Defaults to the
+project_id = "escayr"
+
+[api]
+enabled = true
+# Port to use for the API URL.
+port = 54321
+# Array of extra schemas to expose in the API. Use a comma-separated string to specify multiple schemas.
+schemas = ["public", "graphql_public"]
+# Extra non-schema scopes to expose in the API.
+extra_search_path = ["public", "extensions"]
+# The maximum number of rows returns from a view, table, or stored procedure. Limits payload size for accidental or malicious requests.
+max_rows = 1000
+
+[db]
+# Port to use for the local database URL.
+port = 54322
+# Port to use for the local database shadow URL.
+shadow_port = 54320
+# The database major version to use. This has to be the same as your remote database's. Run `SHOW server_version;` on the remote database to check.
+major_version = 15
+
+[db.pooler]
+enabled = false
+# Port to use for the local connection pooler.
+port = 54329
+# Specifies when a server connection can be reused by other clients.
+# Configure one of the supported pooler routing modes: `transaction`, `session`.
+pool_mode = "transaction"
+
+[realtime]
+enabled = true
+# Port to use for the local Realtime URL.
+port = 54328
+# The maximum payload size in bytes.
+max_payload_mb = 3
+
+[studio]
+enabled = true
+# Port to use for the local Studio URL.
+port = 54323
+# External URL of the API server that resolves to the Studio.
+api_url = "http://127.0.0.1"
+# OpenAI API Key to use for Supabase AI in the Studio.
+openai_api_key = "env(OPENAI_API_KEY)"
+
+[studio.storage]
+# Set the maximum file size (in bytes) to bulk upload in the Storage explorer
+max_bulk_upload_size_bytes = 10485760
+
+# Email testing server. Emails sent with the local Postgres environment are cached and can be viewed via the Studio
+[inbucket]
+enabled = true
+# Port to use for the local Inbucket API and Web URL.
+port = 54324
+# Port to use for the local Inbucket SMTP URL.
+smtp_port = 54325
+# Port to use for the local Inbucket POP3 URL.
+pop3_port = 54326
+
+[storage]
+enabled = true
+# Port to use for the local Storage URL.
+port = 54327
+# The maximum file size allowed (e.g. "5MB", "500KB").
+file_size_limit = "50MiB"
+
+[storage.buckets.evidences]
+public = false
+file_size_limit = "10MiB"
+allowed_mime_types = ["image/jpeg", "image/png", "image/webp"]
+
+[storage.buckets.signatures]
+public = false
+file_size_limit = "5MiB"
+allowed_mime_types = ["image/png", "image/svg+xml"]
+
+[storage.buckets.certificates]
+public = false
+file_size_limit = "20MiB"
+allowed_mime_types = ["application/pdf"]
+
+[auth]
+enabled = true
+# Port to use for the local Auth URL.
+port = 54327
+# External URL of the API server that resolves to the Auth service.
+site_url = "http://localhost:3000"
+# A list of exact URIs that Auth will respect as redirect URLs.
+additional_redirect_urls = ["https://localhost:3000"]
+# Setting `jwt_expiry` shorter than `1h` or `3600` is currently not supported.
+jwt_expiry = 3600
+# Enable magic link login
+enable_magic_link = false
+# Enable email login
+enable_signup = true
+
+[auth.email]
+enabled = true
+# Set double_confirm_changes to false since the project will be manually creating users for employees
+double_confirm_changes = false
+# Do not require email confirmation
+enable_confirmations = false
+
+# ... Default auto-generated config omitted for brevity, keeping essentials
